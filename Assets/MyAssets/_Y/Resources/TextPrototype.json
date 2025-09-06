@@ -1,0 +1,38 @@
+[
+  {
+    "id": "line_001",
+    "speaker": "やまさき",
+    "text": "どこかから視線を感じる.........",
+    "se": "null",
+    "cameraShake": false,
+    "textSpeed": 0.2,
+    "textEffect": "null"
+  },
+  {
+    "id": "line_002",
+    "speaker": "やまさき",
+    "text": "誰かが......",
+    "se": "null",
+    "cameraShake": false,
+    "textSpeed": 0.04,
+    "textEffect": "null"
+  },
+  {
+    "id": "line_003",
+    "speaker": "やまさき",
+    "text": "こんなところにいられるか！",
+    "se": "null",
+    "cameraShake": false,
+    "textSpeed": 0.12,
+    "textEffect": "null"
+  },
+  {
+    "id": "line_004",
+    "speaker": "やまさき",
+    "text": "俺は帰らせてもらう！！！！",
+    "se": "null",
+    "cameraShake": false,
+    "textSpeed": 0.12,
+    "textEffect": "null"
+  }
+]
