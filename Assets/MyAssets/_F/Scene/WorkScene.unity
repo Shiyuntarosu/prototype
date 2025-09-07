@@ -502,6 +502,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &479497775 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8762286023885395077, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+  m_PrefabInstance: {fileID: 1701713736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &479497780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479497775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0365e8b72f02245876b852ec28ec29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MyPlayerCamera
+  amplitudeGainRatio: 0.3
+  frequencyGainRatio: 0.2
 --- !u!1 &527433983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,12 +1103,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 799859905}
     - target: {fileID: 8740641711352610557, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: NoiseProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 850c30bc156179740820a0433635124c, type: 2}
+    - target: {fileID: 8740641711352610557, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: AmplitudeGain
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8740641711352610557, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: FrequencyGain
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395077, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_Name
@@ -1138,7 +1161,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8762286023885395077, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 479497780}
   m_SourcePrefab: {fileID: 100100000, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
 --- !u!1 &1743473321
 GameObject:
