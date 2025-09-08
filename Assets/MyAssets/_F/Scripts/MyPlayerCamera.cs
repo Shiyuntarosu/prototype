@@ -30,7 +30,7 @@ public class MyPlayerCamera : MonoBehaviour
         originalAmplitudeGain = _cinemachineBasicMultiChannelPerlin.AmplitudeGain;
         originalFrequencyGain = _cinemachineBasicMultiChannelPerlin.FrequencyGain;
 
-        handyLight = _player.transform.Find("HandyLight").GetComponent<Light>();
+        handyLight = transform.Find("HandyLight").GetComponent<Light>();
     }
 
     void Update()
