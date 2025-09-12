@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e66f533bec7814e91493142d0a8597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MyCostomPlayer
+  interactRange: 5
 --- !u!114 &6892696538374237890
 MonoBehaviour:
   m_ObjectHideFlags: 0
