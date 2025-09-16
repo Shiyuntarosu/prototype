@@ -5,7 +5,9 @@ public class ItemSpawnPoint : MonoBehaviour
     /// <summary>
     /// ItemDatabaseを元に生成したいアイテムIDを設定する
     /// </summary>
-    private int itemId = 0;
+    [HideInInspector]
+    [SerializeField]
+    private int itemId;
 
     public int ItemId => itemId;
 

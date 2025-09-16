@@ -18,4 +18,4 @@ MonoBehaviour:
     prefab: {fileID: 1133162245593481588, guid: 5f025eff923aafb4fa3592a3e060109e, type: 3}
   - itemId: 1
     itemName: TestCubeRed
-    prefab: {fileID: 1133162245593481588, guid: 5f025eff923aafb4fa3592a3e060109e, type: 3}
+    prefab: {fileID: 1133162245593481588, guid: df4ef4ccafcde404c80cae281ce801f5, type: 3}

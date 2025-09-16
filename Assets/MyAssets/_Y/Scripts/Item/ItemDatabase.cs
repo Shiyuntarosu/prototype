@@ -15,4 +15,9 @@ public class ItemDatabase : ScriptableObject
         return items.Find(item => item.itemId == id);
     }
 
+    public ItemData GetItemIdByName(string itemName)
+    {
+        return items.Find(item => item.itemName == itemName);
+    }
+
 }

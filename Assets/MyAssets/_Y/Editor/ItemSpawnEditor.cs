@@ -1,5 +1,6 @@
 using UnityEditor;
 using System.Linq;
+using UnityEngine;
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(ItemSpawnPoint))]
@@ -13,6 +14,7 @@ public class ItemSpawnPointEditor : Editor
         if (database != null)
         {
             var itemNames = database.Items.Select(i => i.itemName).ToArray();
+
             var selectedIndex = EditorGUILayout.Popup("Item", spawnPoint.ItemId, itemNames);
             spawnPoint.SetItemId(selectedIndex);
         }
