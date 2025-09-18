@@ -8,7 +8,7 @@ public class InteractTimeLine : MonoBehaviour, IInteractable, ITimeControl
     public GameObject _timeline;
     public CinemachineCamera _camera;
 
-    public void ReceiveInteract(GameObject _player)
+    public void OnInteract(GameObject _player)
     {
         Debug.Log(gameObject.name + ":" + _player.name + "がインタラクト");
         _timeline.TryGetComponent(out PlayableDirector component);
