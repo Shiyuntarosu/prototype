@@ -50,6 +50,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PickUpItem",
+                    "type": "Button",
+                    "id": "072914ee-bea3-48da-a91d-a2368324b199",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Throw",
+                    "type": "Button",
+                    "id": "484f0cd9-89bb-4ce2-b95d-ea9f99817cfd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ItemSlot_Up",
+                    "type": "Value",
+                    "id": "8844daf0-605e-4740-8b05-a72fd463bdac",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ItemSlot_Down",
+                    "type": "Value",
+                    "id": "e1c12239-970e-4c25-83d3-79c103dc083a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -239,6 +275,50 @@
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba5e0502-0149-49d1-9860-d4de32888a85",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardMouse",
+                    "action": "PickUpItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8cb5c22c-7569-4bf0-9027-f877f3642678",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardMouse",
+                    "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3474467-fcb5-4e97-b62a-9fa74a1a2df9",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardMouse",
+                    "action": "ItemSlot_Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "38a1c07d-b660-43f5-aa52-3288c77c9cc7",
+                    "path": "<Mouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardMouse",
+                    "action": "ItemSlot_Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -246,15 +326,6 @@
             "name": "FixedCamera",
             "id": "5510ea3d-e891-443c-ac20-e637fd7aee28",
             "actions": [
-                {
-                    "name": "Look",
-                    "type": "Value",
-                    "id": "271f3bcd-c54f-4fd8-9188-a08a05a3ed8f",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
                 {
                     "name": "Interact",
                     "type": "Button",
@@ -288,28 +359,6 @@
                 },
                 {
                     "name": "",
-                    "id": "59b28274-3a5b-420b-a367-cbac34ac6dcd",
-                    "path": "<Pointer>/delta",
-                    "interactions": "",
-                    "processors": "InvertVector2(invertX=false),ScaleVector2(x=0.05,y=0.05)",
-                    "groups": "KeyboardMouse",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ff12ca91-82d0-4402-9359-9569f0c70ab4",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "InvertVector2(invertX=false),StickDeadzone,ScaleVector2(x=300,y=300)",
-                    "groups": "Gamepad",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "9a5832bb-9b3d-4ecb-a4ea-1df59df4709b",
                     "path": "<Keyboard>/f",
                     "interactions": "",
@@ -320,6 +369,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "NonControl",
+            "id": "70d1871e-277f-4bfd-b217-9c5b80ca95a0",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [

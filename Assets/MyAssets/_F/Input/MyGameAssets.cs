@@ -136,6 +136,42 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PickUpItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""072914ee-bea3-48da-a91d-a2368324b199"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Throw"",
+                    ""type"": ""Button"",
+                    ""id"": ""484f0cd9-89bb-4ce2-b95d-ea9f99817cfd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ItemSlot_Up"",
+                    ""type"": ""Value"",
+                    ""id"": ""8844daf0-605e-4740-8b05-a72fd463bdac"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ItemSlot_Down"",
+                    ""type"": ""Value"",
+                    ""id"": ""e1c12239-970e-4c25-83d3-79c103dc083a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -325,6 +361,50 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba5e0502-0149-49d1-9860-d4de32888a85"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardMouse"",
+                    ""action"": ""PickUpItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cb5c22c-7569-4bf0-9027-f877f3642678"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardMouse"",
+                    ""action"": ""Throw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3474467-fcb5-4e97-b62a-9fa74a1a2df9"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardMouse"",
+                    ""action"": ""ItemSlot_Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38a1c07d-b660-43f5-aa52-3288c77c9cc7"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardMouse"",
+                    ""action"": ""ItemSlot_Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -332,15 +412,6 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
             ""name"": ""FixedCamera"",
             ""id"": ""5510ea3d-e891-443c-ac20-e637fd7aee28"",
             ""actions"": [
-                {
-                    ""name"": ""Look"",
-                    ""type"": ""Value"",
-                    ""id"": ""271f3bcd-c54f-4fd8-9188-a08a05a3ed8f"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
                 {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
@@ -374,28 +445,6 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""59b28274-3a5b-420b-a367-cbac34ac6dcd"",
-                    ""path"": ""<Pointer>/delta"",
-                    ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false),ScaleVector2(x=0.05,y=0.05)"",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ff12ca91-82d0-4402-9359-9569f0c70ab4"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false),StickDeadzone,ScaleVector2(x=300,y=300)"",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""9a5832bb-9b3d-4ecb-a4ea-1df59df4709b"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
@@ -406,6 +455,12 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""NonControl"",
+            ""id"": ""70d1871e-277f-4bfd-b217-9c5b80ca95a0"",
+            ""actions"": [],
+            ""bindings"": []
         }
     ],
     ""controlSchemes"": [
@@ -465,17 +520,23 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_PickUpItem = m_Player.FindAction("PickUpItem", throwIfNotFound: true);
+        m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
+        m_Player_ItemSlot_Up = m_Player.FindAction("ItemSlot_Up", throwIfNotFound: true);
+        m_Player_ItemSlot_Down = m_Player.FindAction("ItemSlot_Down", throwIfNotFound: true);
         // FixedCamera
         m_FixedCamera = asset.FindActionMap("FixedCamera", throwIfNotFound: true);
-        m_FixedCamera_Look = m_FixedCamera.FindAction("Look", throwIfNotFound: true);
         m_FixedCamera_Interact = m_FixedCamera.FindAction("Interact", throwIfNotFound: true);
         m_FixedCamera_ExitCamera = m_FixedCamera.FindAction("ExitCamera", throwIfNotFound: true);
+        // NonControl
+        m_NonControl = asset.FindActionMap("NonControl", throwIfNotFound: true);
     }
 
     ~@MyGameAssets()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, MyGameAssets.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_FixedCamera.enabled, "This will cause a leak and performance issues, MyGameAssets.FixedCamera.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_NonControl.enabled, "This will cause a leak and performance issues, MyGameAssets.NonControl.Disable() has not been called.");
     }
 
     /// <summary>
@@ -556,6 +617,10 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_PickUpItem;
+    private readonly InputAction m_Player_Throw;
+    private readonly InputAction m_Player_ItemSlot_Up;
+    private readonly InputAction m_Player_ItemSlot_Down;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -587,6 +652,22 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/PickUpItem".
+        /// </summary>
+        public InputAction @PickUpItem => m_Wrapper.m_Player_PickUpItem;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Throw".
+        /// </summary>
+        public InputAction @Throw => m_Wrapper.m_Player_Throw;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/ItemSlot_Up".
+        /// </summary>
+        public InputAction @ItemSlot_Up => m_Wrapper.m_Player_ItemSlot_Up;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/ItemSlot_Down".
+        /// </summary>
+        public InputAction @ItemSlot_Down => m_Wrapper.m_Player_ItemSlot_Down;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -628,6 +709,18 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @PickUpItem.started += instance.OnPickUpItem;
+            @PickUpItem.performed += instance.OnPickUpItem;
+            @PickUpItem.canceled += instance.OnPickUpItem;
+            @Throw.started += instance.OnThrow;
+            @Throw.performed += instance.OnThrow;
+            @Throw.canceled += instance.OnThrow;
+            @ItemSlot_Up.started += instance.OnItemSlot_Up;
+            @ItemSlot_Up.performed += instance.OnItemSlot_Up;
+            @ItemSlot_Up.canceled += instance.OnItemSlot_Up;
+            @ItemSlot_Down.started += instance.OnItemSlot_Down;
+            @ItemSlot_Down.performed += instance.OnItemSlot_Down;
+            @ItemSlot_Down.canceled += instance.OnItemSlot_Down;
         }
 
         /// <summary>
@@ -654,6 +747,18 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @PickUpItem.started -= instance.OnPickUpItem;
+            @PickUpItem.performed -= instance.OnPickUpItem;
+            @PickUpItem.canceled -= instance.OnPickUpItem;
+            @Throw.started -= instance.OnThrow;
+            @Throw.performed -= instance.OnThrow;
+            @Throw.canceled -= instance.OnThrow;
+            @ItemSlot_Up.started -= instance.OnItemSlot_Up;
+            @ItemSlot_Up.performed -= instance.OnItemSlot_Up;
+            @ItemSlot_Up.canceled -= instance.OnItemSlot_Up;
+            @ItemSlot_Down.started -= instance.OnItemSlot_Down;
+            @ItemSlot_Down.performed -= instance.OnItemSlot_Down;
+            @ItemSlot_Down.canceled -= instance.OnItemSlot_Down;
         }
 
         /// <summary>
@@ -691,7 +796,6 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
     // FixedCamera
     private readonly InputActionMap m_FixedCamera;
     private List<IFixedCameraActions> m_FixedCameraActionsCallbackInterfaces = new List<IFixedCameraActions>();
-    private readonly InputAction m_FixedCamera_Look;
     private readonly InputAction m_FixedCamera_Interact;
     private readonly InputAction m_FixedCamera_ExitCamera;
     /// <summary>
@@ -705,10 +809,6 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
         public FixedCameraActions(@MyGameAssets wrapper) { m_Wrapper = wrapper; }
-        /// <summary>
-        /// Provides access to the underlying input action "FixedCamera/Look".
-        /// </summary>
-        public InputAction @Look => m_Wrapper.m_FixedCamera_Look;
         /// <summary>
         /// Provides access to the underlying input action "FixedCamera/Interact".
         /// </summary>
@@ -743,9 +843,6 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_FixedCameraActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_FixedCameraActionsCallbackInterfaces.Add(instance);
-            @Look.started += instance.OnLook;
-            @Look.performed += instance.OnLook;
-            @Look.canceled += instance.OnLook;
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
@@ -763,9 +860,6 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
         /// <seealso cref="FixedCameraActions" />
         private void UnregisterCallbacks(IFixedCameraActions instance)
         {
-            @Look.started -= instance.OnLook;
-            @Look.performed -= instance.OnLook;
-            @Look.canceled -= instance.OnLook;
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
@@ -805,6 +899,91 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="FixedCameraActions" /> instance referencing this action map.
     /// </summary>
     public FixedCameraActions @FixedCamera => new FixedCameraActions(this);
+
+    // NonControl
+    private readonly InputActionMap m_NonControl;
+    private List<INonControlActions> m_NonControlActionsCallbackInterfaces = new List<INonControlActions>();
+    /// <summary>
+    /// Provides access to input actions defined in input action map "NonControl".
+    /// </summary>
+    public struct NonControlActions
+    {
+        private @MyGameAssets m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public NonControlActions(@MyGameAssets wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_NonControl; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="NonControlActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(NonControlActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="NonControlActions" />
+        public void AddCallbacks(INonControlActions instance)
+        {
+            if (instance == null || m_Wrapper.m_NonControlActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_NonControlActionsCallbackInterfaces.Add(instance);
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="NonControlActions" />
+        private void UnregisterCallbacks(INonControlActions instance)
+        {
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="NonControlActions.UnregisterCallbacks(INonControlActions)" />.
+        /// </summary>
+        /// <seealso cref="NonControlActions.UnregisterCallbacks(INonControlActions)" />
+        public void RemoveCallbacks(INonControlActions instance)
+        {
+            if (m_Wrapper.m_NonControlActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="NonControlActions.AddCallbacks(INonControlActions)" />
+        /// <seealso cref="NonControlActions.RemoveCallbacks(INonControlActions)" />
+        /// <seealso cref="NonControlActions.UnregisterCallbacks(INonControlActions)" />
+        public void SetCallbacks(INonControlActions instance)
+        {
+            foreach (var item in m_Wrapper.m_NonControlActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_NonControlActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="NonControlActions" /> instance referencing this action map.
+    /// </summary>
+    public NonControlActions @NonControl => new NonControlActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -899,6 +1078,34 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PickUpItem" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPickUpItem(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Throw" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnThrow(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ItemSlot_Up" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnItemSlot_Up(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ItemSlot_Down" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnItemSlot_Down(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "FixedCamera" which allows adding and removing callbacks.
@@ -907,13 +1114,6 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
     /// <seealso cref="FixedCameraActions.RemoveCallbacks(IFixedCameraActions)" />
     public interface IFixedCameraActions
     {
-        /// <summary>
-        /// Method invoked when associated input action "Look" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLook(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -928,5 +1128,13 @@ public partial class @MyGameAssets: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnExitCamera(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "NonControl" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="NonControlActions.AddCallbacks(INonControlActions)" />
+    /// <seealso cref="NonControlActions.RemoveCallbacks(INonControlActions)" />
+    public interface INonControlActions
+    {
     }
 }
