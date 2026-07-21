@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e4c71d3c52f05247b7fa0fbe4fb909b, type: 3}
   m_Name: 003_GreenCube
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: BlueCube
+  itemName: GreenCube
   id: 3
-  maxStack: 1
+  maxStack: 5
   prefab: {fileID: 5874723605229222296, guid: 7865b413bab780748b62ec7bfd06873c, type: 3}
   icon: {fileID: 21300000, guid: 767841efb466d1d4691686835ca836fe, type: 3}
   onHandOffset: {x: 0, y: 0, z: 0}
+  features: []
+  instanceMode: 0
+  references:
+    version: 2
+    RefIds: []

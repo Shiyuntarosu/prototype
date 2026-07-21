@@ -22,8 +22,8 @@ public class TimelineTriggerObject : MonoBehaviour, IInteractable
         Debug.Log("スタート");
         if (_player != null)
         {
-            _player.TryGetComponent(out MyCostomPlayer playerComponent);
-            playerComponent.SetActionMap_FixedCamera();
+            _player.TryGetComponent(out MyCustomPlayer playerComponent);
+            //playerComponent.SetActionMap_FixedCamera();
         }
     }
 
@@ -32,7 +32,7 @@ public class TimelineTriggerObject : MonoBehaviour, IInteractable
         Debug.Log("エンド");
         if (_player != null)
         {
-            _player.TryGetComponent(out MyCostomPlayer playerComponent);
+            _player.TryGetComponent(out MyCustomPlayer playerComponent);
             playerComponent.SetActionMap_Player();
         }
     }

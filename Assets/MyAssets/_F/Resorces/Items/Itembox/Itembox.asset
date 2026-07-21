@@ -10,16 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e4c71d3c52f05247b7fa0fbe4fb909b, type: 3}
-  m_Name: 001_RedCube
+  m_Name: Itembox
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: RedCube
-  id: 1
-  maxStack: 5
-  prefab: {fileID: 5874723605229222296, guid: 1cf50130c96d35c479d3bbc4dc2c811f, type: 3}
-  icon: {fileID: 21300000, guid: 23e6f61c211a79b4881226270091d0dd, type: 3}
-  onHandOffset: {x: 0, y: 0, z: 0}
-  features: []
-  instanceMode: 0
+  itemName: Itembox
+  id: 0
+  maxStack: 1
+  prefab: {fileID: 2062565059854008542, guid: 3eac3c774e142c143a168f85cc343e42, type: 3}
+  icon: {fileID: 0}
+  onHandOffset: {x: -0.5, y: 0, z: 0}
+  features:
+  - rid: 3381544764156936294
+  instanceMode: 1
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3381544764156936294
+      type: {class: ContainerFeatureData, ns: , asm: Assembly-CSharp}
+      data:
+        maxCapacity: 20

@@ -1,32 +1,38 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemBox : MonoBehaviour, IInteractable
+public class ItemBox : WorldItem
 {
-    [SerializeField]
-    private string itemName;
-    [SerializeField]
-    private int maxSize;
-    [SerializeField]
-    private int size;
-    [SerializeField]
-    private List<ItemData> itemList;
 
-    public int GetItemListCount()
+    public bool PutInItemBox(ItemInstance item, int amount)
     {
-        if (itemList == null) return 0;
-        return itemList.Count;
-    }
-
-    public void PutInItemBox(ItemData itemData)
-    {
+        // アイテムインスタンス取得
+        ItemInstance instance = GetItemInstance();
         // アイテムデータをリストに追加
-        itemList.Add(itemData);
-        Debug.Log(itemData.name + "を入れた");
+        if (instance.GetFeature<ContainerFeature>().TryStore(item, amount))
+        {
+            Debug.Log(item.data.itemName + "を入れた");
+            return true;
+        }
+        return false;
     }
 
-    public void OnInteract(GameObject _player)
+    public override void OnInteract(GameObject _player)
     {
         Debug.Log(gameObject.name + ":" + _player.name + "がインタラクト開始");
+        // アイテムインスタンス取得
+        ItemInstance instance = GetItemInstance();
+        // アイテムデータをリストに追加
+        ContainerFeature containerFeature = instance.GetFeature<ContainerFeature>();
+        UIManager.Instance.OpenContainer(containerFeature.Container);
+
+        // // コンポーネント取得
+        // MyCostomPlayer player = _player.GetComponent<MyCostomPlayer>();
+        // // プレイヤーの持っているアイテムが受け入れ可能かチェック
+        // ItemSlot itemSlot = player.GetSelectedItemSlot();
+        // if (PutInItemBox(itemSlot.item, itemSlot.count))
+        // {
+        //     // 入れたアイテムをプレイヤーから減らす
+        //     player.TakeSelectedItem();
+        // }
     }
 }

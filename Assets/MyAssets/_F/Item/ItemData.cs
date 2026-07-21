@@ -1,5 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
+public enum InstanceMode
+{
+    CreateOnPickup,
+    CreateOnSpawn
+}
 
 [CreateAssetMenu(menuName = "ItemData")]
 public class ItemData : ScriptableObject
@@ -15,4 +21,8 @@ public class ItemData : ScriptableObject
     public Sprite icon;
 
     public Vector3 onHandOffset;   // 手に持った時の位置調整
+
+    [SerializeReference, SubclassSelector] public List<ItemFeatureData> features = new();
+
+    public InstanceMode instanceMode = InstanceMode.CreateOnPickup;
 }

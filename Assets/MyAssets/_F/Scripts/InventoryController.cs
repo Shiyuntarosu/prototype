@@ -1,143 +1,81 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
     public event Action OnInventoryChanged;     // インベントリ変更検知
-    public event Action<ItemSlot> OnSelectedItemChanged; // 選択中アイテム変更検知
+    public event Action OnSelectedItemChanged; // 選択中アイテム変更検知
 
-    [SerializeField] private List<ItemSlot> inventory; // インベントリ
-    public IReadOnlyList<ItemSlot> Inventory { get { return inventory; } }  // 外部参照用（読み取り専用）
-    [SerializeField] private GameObject ui_inventory; // インベントリのＵＩ
-    public const int inventorySize = 5; // インベントリの大きさ
-    public int selectedIndex { get; private set; }
+    [SerializeField] public ItemContainer ItemContainer { get; private set; }
 
-    [SerializeField]
-    private ItemSlot selectedItemSlot    // 選択中のスロット
+    [SerializeField] public int inventorySize { get; private set; } = 5;
+
+    public int SelectedIndex { get; private set; } = 0;
+
+    public ItemSlot PeekSelectedItemSlot => ItemContainer.Slots[SelectedIndex];
+
+    void Awake()
     {
-        get
-        {
-            return inventory[selectedIndex];
-        }
+        ItemContainer = new ItemContainer(inventorySize);
+        ItemContainer.OnChanged += NotifyChanged;
     }
 
-    void Start()
+    public void NotifyChanged()
     {
-        OnInitialize();
-    }
-
-    // インベントリスロットをすべて空にする
-    public void OnInitialize()
-    {
-        inventory.Clear();
-        for (int i = 0; i < inventorySize; i++)
-        {
-            inventory.Add(new ItemSlot(null, 0));
-        }
         OnInventoryChanged?.Invoke();
-        OnSelectedItemChanged?.Invoke(selectedItemSlot);
+        OnSelectedItemChanged?.Invoke();
     }
 
     // アイテムスロット切り替え
     public void ChangeItemSlot(int value)
     {
-        selectedIndex += value;
-        if (selectedIndex < 0)
+        SelectedIndex += value;
+        if (SelectedIndex < 0)
         {
-            selectedIndex = inventorySize - 1;
+            SelectedIndex = ItemContainer.Size - 1;
         }
-        if (selectedIndex >= inventorySize)
+        if (SelectedIndex >= ItemContainer.Size)
         {
-            selectedIndex = 0;
+            SelectedIndex = 0;
         }
-        Debug.Log(selectedIndex);
 
-        OnSelectedItemChanged?.Invoke(selectedItemSlot);    // 選択中のアイテムが更新された
+        OnSelectedItemChanged?.Invoke();    // 選択中のアイテムが更新された
     }
 
 
     // インベントリにアイテムを追加する
-    public bool AddItem(ItemData item, int amount)
+    public bool TryAddItem(ItemInstance item, int amount)
     {
-        // 既存スタックがあれば足す
-        foreach (ItemSlot slot in inventory)
+        if (item == null) return false;
+        if (ItemContainer.TryAddItem(item, amount))
         {
-            if (slot.item == item && slot.count < item.maxStack)
-            {
-                // 拾った数か1スタックまでの数
-                int add = Mathf.Min(amount, item.maxStack - slot.count);
-
-                slot.count += add;
-                amount -= add;
-
-                if (amount <= 0)
-                {
-                    OnInventoryChanged?.Invoke(); // インベントリが更新された
-                    OnSelectedItemChanged?.Invoke(selectedItemSlot);    // 選択中のアイテムが更新された
-                    return true;
-                }
-            }
+            NotifyChanged();
+            return true;
         }
-
-        // 空スロットを探す
-        foreach (ItemSlot slot in inventory)
-        {
-            if (slot.IsEmpty)
-            {
-                slot.item = item;
-
-                // 拾った数か最大スタック数までの数
-                int add = Mathf.Min(amount, item.maxStack);
-
-                slot.count = add;
-                amount -= add;
-
-                if (amount <= 0)
-                {
-                    OnInventoryChanged?.Invoke(); // インベントリが更新された
-                    OnSelectedItemChanged?.Invoke(selectedItemSlot);    // 選択中のアイテムが更新された
-                    return true;
-                }
-            }
-        }
-
-        Debug.Log("アイテムいっぱい");
         return false;
     }
 
     // インベントリからアイテムを取り出す
     public ItemSlot TakeSelectedItem(int amount = 1)
     {
-        // 取り出す個数
-        int take = Mathf.Min(amount, selectedItemSlot.count);
-
-        // 取り出すアイテム
-        ItemSlot result = new ItemSlot(selectedItemSlot.item, take);
-
-        // 取りだした分を減らす
-        selectedItemSlot.count -= take;
-        if (selectedItemSlot.count <= 0)
+        ItemSlot result = ItemContainer.TryTakeItem(SelectedIndex, amount);
+        if (!result.IsEmpty)
         {
-            selectedItemSlot.item = null;
+            NotifyChanged();
         }
-
-        OnInventoryChanged?.Invoke(); // インベントリが更新された
-        OnSelectedItemChanged?.Invoke(selectedItemSlot);    // 選択中のアイテムが更新された
-
         return result;
     }
 
     // アイテムを拾う
-    public bool PickUpItem(ItemData item)
+    public bool PickUpItem(ItemInstance item)
     {
         // インベントリにアイテムを追加
-        if (!AddItem(item, 1))
+        if (!TryAddItem(item, 1))
         {
             Debug.Log("アイテムいっぱい");
             return false;
         }
-        Debug.Log(item + "を拾った");
+        Debug.Log(item.data.itemName + "を拾った");
         return true;
     }
 }

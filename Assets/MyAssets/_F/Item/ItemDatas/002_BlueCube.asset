@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: BlueCube
   id: 2
-  maxStack: 2
+  maxStack: 5
   prefab: {fileID: 5874723605229222296, guid: 17faf037ca1f6564d8f15192cb90efce, type: 3}
   icon: {fileID: 21300000, guid: a5383a20d271dcb439ef7d033bf50067, type: 3}
   onHandOffset: {x: 0, y: 0, z: 0}
+  features: []
+  instanceMode: 0
+  references:
+    version: 2
+    RefIds: []

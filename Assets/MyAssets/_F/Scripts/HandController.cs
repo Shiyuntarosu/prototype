@@ -8,25 +8,25 @@ public class HandController : MonoBehaviour
 
     [SerializeField] private GameObject itemView; // 手に持っているアイテム
 
-    private InventoryController inventoryController;
+    private InventoryController inventory;
     void Start()
     {
-        inventoryController = GetComponent<InventoryController>();
-        inventoryController.OnSelectedItemChanged += OnItemChanged;
+        inventory = GetComponent<InventoryController>();
+        inventory.OnSelectedItemChanged += OnItemChanged;
     }
 
     void OnDestroy()
     {
-        inventoryController.OnSelectedItemChanged -= OnItemChanged;
+        inventory.OnSelectedItemChanged -= OnItemChanged;
     }
 
-    private void OnItemChanged(ItemSlot itemSlot)
+    private void OnItemChanged()
     {
-        SetItemView(itemSlot.item);
+        SetItemView(inventory.PeekSelectedItemSlot.item);
     }
 
     // アイテムを手に持つ
-    private void SetItemView(ItemData item)
+    private void SetItemView(ItemInstance item)
     {
         if (itemView != null)
         {
@@ -36,7 +36,7 @@ public class HandController : MonoBehaviour
             return;
 
         // プレハブ生成
-        itemView = Instantiate(item.prefab, ItemRoot);
+        itemView = Instantiate(item.data.prefab, ItemRoot);
         // 親子関係設定
         itemView.transform.parent = ItemRoot.transform;
         // コンポーネント設定
@@ -49,17 +49,28 @@ public class HandController : MonoBehaviour
     public void ThrowSelectedItem()
     {
         // 手に持っているアイテムから１つ取り出す
-        ItemSlot takeItem = inventoryController.TakeSelectedItem(1);
+        ItemSlot takeItem = inventory.TakeSelectedItem(1);
         if (takeItem.item == null) return;
+
+        ItemInstance instance = takeItem.item;
+
         // 物理計算用のゲームオブジェクトをアイテムを持つ位置に作成
-        GameObject item = Instantiate(takeItem.item.prefab, ItemRoot.transform.position, ItemRoot.transform.rotation);
+        GameObject obj = Instantiate(instance.data.prefab, ItemRoot.transform.position, ItemRoot.transform.rotation);
         // 親子関係リセット
-        item.transform.SetParent(null);
+        obj.transform.SetParent(null);
+
         // コンポーネント設定
-        item.TryGetComponent(out Rigidbody rb);
+        obj.TryGetComponent(out WorldItem worldItem);
+        if (worldItem == null)
+        {
+            worldItem = obj.AddComponent<WorldItem>();
+        }
+        worldItem.Initialize(instance);
+
+        obj.TryGetComponent(out Rigidbody rb);
         if (rb == null)
         {
-            rb = item.AddComponent<Rigidbody>();
+            rb = obj.AddComponent<Rigidbody>();
         }
         rb.linearVelocity = Vector3.zero;// 速度リセット
 

@@ -28,7 +28,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "8c4abdf8-4099-493a-aa1a-129acec7c3df",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -61,7 +61,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Throw",
+                    "name": "SubInteract",
                     "type": "Button",
                     "id": "484f0cd9-89bb-4ce2-b95d-ea9f99817cfd",
                     "expectedControlType": "",
@@ -294,7 +294,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";KeyboardMouse",
-                    "action": "Throw",
+                    "action": "SubInteract",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -323,22 +323,40 @@
             ]
         },
         {
-            "name": "FixedCamera",
-            "id": "5510ea3d-e891-443c-ac20-e637fd7aee28",
+            "name": "UI",
+            "id": "2bf9ab8c-d606-4586-96b4-1d887609b8a6",
             "actions": [
                 {
-                    "name": "Interact",
+                    "name": "Point",
+                    "type": "Value",
+                    "id": "9f7a00ec-554d-4579-835b-14e5abaf8829",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Click",
                     "type": "Button",
-                    "id": "956ffb5f-eabb-46e3-9258-5c0d21b88536",
+                    "id": "25633e85-b6f1-4ea8-a01c-08215f8f666f",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ExitCamera",
+                    "name": "Cancel",
                     "type": "Button",
-                    "id": "76dbcb93-c899-4e41-9737-214b6b102da8",
+                    "id": "ad5c769c-42d6-4627-b968-481eb677affb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Shift",
+                    "type": "Button",
+                    "id": "4124be40-47c7-4737-aa9b-7a5ca1f7e0fd",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -348,33 +366,71 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "2beb242c-fb5c-4920-aabe-349d62ccf904",
-                    "path": "<Keyboard>/ctrl",
+                    "id": "59c1a835-0f08-4122-b4ad-58250316fa2a",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";KeyboardMouse",
-                    "action": "ExitCamera",
+                    "groups": "",
+                    "action": "Point",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "9a5832bb-9b3d-4ecb-a4ea-1df59df4709b",
-                    "path": "<Keyboard>/f",
+                    "id": "cc9a291d-5ed0-45a6-81e2-e83ed6f44cc8",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "14720a82-bc49-4a00-90f2-1e5381431e6b",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": ";KeyboardMouse",
-                    "action": "Interact",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2ae9711b-9502-491b-ae8a-b35725b8ffc0",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardMouse",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eee1d242-7f60-4609-882d-74e4a04f5d3c",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shift",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21ac317a-72c2-4e2f-8d5b-17d8b39092e5",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shift",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
-        },
-        {
-            "name": "NonControl",
-            "id": "70d1871e-277f-4bfd-b217-9c5b80ca95a0",
-            "actions": [],
-            "bindings": []
         }
     ],
     "controlSchemes": [

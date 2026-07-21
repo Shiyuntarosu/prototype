@@ -1,41 +1,69 @@
 using UnityEngine;
 
+// プレイヤーの子オブジェクトに設定する
 public class PlayerHUDController : MonoBehaviour
 {
     [SerializeField] private GameObject ui_Crosshair;
-    [SerializeField] private UI_Inventory ui_Inventory;
+    [SerializeField] private ItemContainerView itemContainerView;
 
-    private InventoryController inventoryContorller;
+    private InventoryController inventory;
 
     void Start()
     {
-        ui_Inventory.OnInitialize();
-        inventoryContorller = transform.parent.GetComponent<InventoryController>();
-        inventoryContorller.OnInventoryChanged += RefreshInventoryUI;
-        inventoryContorller.OnSelectedItemChanged += OnSelectedItemChanged;
+        SetInventory(transform.parent.GetComponent<InventoryController>());
     }
 
-    void OnDestroy()
+    public void SetInventory(InventoryController inventory)
     {
-        inventoryContorller.OnInventoryChanged -= RefreshInventoryUI;
-    }
-
-    void OnSelectedItemChanged(ItemSlot item)
-    {
-        for (int i = 0; i < InventoryController.inventorySize; i++)
+        Debug.Log("setContaier");
+        if (this.inventory != null)
         {
-            ui_Inventory.Slots[i].SetSelected(false);
-            if (i == inventoryContorller.selectedIndex)
-                ui_Inventory.Slots[i].SetSelected(true);
+            this.inventory.OnSelectedItemChanged -= UpdateSelection;
+
+            itemContainerView.OnSlotLeftClicked -= UIManager.Instance.OnSlotLeftClicked;
+            itemContainerView.OnSlotRightClicked -= UIManager.Instance.OnSlotRightClicked;
+            itemContainerView.OnSlotShiftLeftClicked -= OnShiftLeftClicked;
+        }
+
+        this.inventory = inventory;
+
+        // ViewにインベントリのItemContaierを渡す
+        itemContainerView.SetContainer(inventory.ItemContainer);
+
+        itemContainerView.OnSlotLeftClicked += UIManager.Instance.OnSlotLeftClicked;
+        itemContainerView.OnSlotRightClicked += UIManager.Instance.OnSlotRightClicked;
+        itemContainerView.OnSlotShiftLeftClicked += OnShiftLeftClicked;
+
+        // 選択イベント購読
+        inventory.OnSelectedItemChanged += UpdateSelection;
+        UpdateSelection();
+
+        UIManager.Instance.SetPlayerContainer(inventory.ItemContainer);
+    }
+
+    // 選択アイテム更新処理
+    public void UpdateSelection()
+    {
+        for (int i = 0; i < itemContainerView.SlotViews.Count; i++)
+        {
+            itemContainerView.SlotViews[i].SetSelected(i == inventory.SelectedIndex);
         }
     }
 
-    // ＵＩを再読み込みする
-    public void RefreshInventoryUI()
+    private void OnDestroy()
     {
-        for (int i = 0; i < InventoryController.inventorySize; i++)
+        if (inventory != null)
         {
-            ui_Inventory.Slots[i].SetItem(inventoryContorller.Inventory[i]);
+            inventory.OnSelectedItemChanged -= UpdateSelection;
+
+            itemContainerView.OnSlotLeftClicked -= UIManager.Instance.OnSlotLeftClicked;
+            itemContainerView.OnSlotRightClicked -= UIManager.Instance.OnSlotRightClicked;
+            itemContainerView.OnSlotShiftLeftClicked -= OnShiftLeftClicked;
         }
+    }
+    
+    private void OnShiftLeftClicked(SlotReference slot)
+    {
+        UIManager.Instance.ShiftFromPlayer(slot);
     }
 }
